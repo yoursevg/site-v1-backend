@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "posts"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "price": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "stock": {
+      "type": "integer",
+      "default": 1,
+      "required": true
+    },
+    "location": {
+      "type": "string"
+    },
+    "condition": {
+      "type": "enumeration",
+      "enum": [
+        "Новый",
+        "Б/У"
+      ],
+      "default": "Новый"
+    }
+  }
+}
