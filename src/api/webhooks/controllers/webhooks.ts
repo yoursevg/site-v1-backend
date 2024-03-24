@@ -58,6 +58,45 @@ module.exports = {
 
         // Respond with a success message
         ctx.send({ message: 'User instance created successfully', user: newUser });
+      } else
+        if (type === 'user.updated') {
+        try {
+          // Assuming 'identificator' is used to match the user in your Strapi database.
+          const existingUser = await strapi.db.query('plugin::users-permissions.user').findOne({
+            where: { identificator: data.id },
+          });
+
+          if (!existingUser) {
+            ctx.throw(404, 'User not found');
+          }
+
+          // Получаем данные из вебхука
+          const email = data.email_addresses[0].email_address;
+          const username = data.username;
+          const first_name = data.first_name
+          const last_name = data.last_name
+          const profile_image_url = data.profile_image_url
+
+          // Создаем тело запроса для обновления данных пользователя
+          const postData = {
+            username,
+            email,
+            first_name,
+            last_name,
+            profile_image_url
+          };
+
+          // Update the existing user
+          const updatedUser = await strapi.db.query('plugin::users-permissions.user').update({
+            where: { identificator: data.id },
+            data: postData
+          });
+
+          ctx.send({ message: 'User updated successfully', user: updatedUser });
+        } catch (e) {
+          // Handle errors specifically for the user update operation
+          ctx.throw(500, `Error updating user: ${e.message}`);
+        }
       }
     } catch (error) {
       // Handle unique constraint errors

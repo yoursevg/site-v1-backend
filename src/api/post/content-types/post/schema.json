@@ -56,6 +56,12 @@
         "Б/У"
       ],
       "default": "Новый"
+    },
+    "users_favorites": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "favorites"
     }
   }
 }

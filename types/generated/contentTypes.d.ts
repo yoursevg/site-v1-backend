@@ -420,6 +420,11 @@ export interface ApiPostPost extends Schema.CollectionType {
       ['\u041D\u043E\u0432\u044B\u0439', '\u0411/\u0423']
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u044B\u0439'>;
+    users_favorites: Attribute.Relation<
+      'api::post.post',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -847,6 +852,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::post.post'
     >;
     profile_image_url: Attribute.Text;
+    favorites: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::post.post'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

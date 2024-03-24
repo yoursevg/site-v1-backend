@@ -84,6 +84,12 @@
     },
     "profile_image_url": {
       "type": "text"
+    },
+    "favorites": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::post.post",
+      "inversedBy": "users_favorites"
     }
   }
 }
