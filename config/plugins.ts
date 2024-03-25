@@ -15,5 +15,43 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  graphql: {
+    config: {
+      endpoint: '/graphql',
+      shadowCRUD: true,
+      playgroundAlways: false,
+      depthLimit: 10,
+      amountLimit: 100,
+      apolloServer: {
+        tracing: false,
+      },
+    },
+  },
+  'fuzzy-search': {
+    enabled: true,
+    config: {
+      contentTypes: [{
+        uid: "api::post.post",
+        modelName: "post",
+        queryConstraints: {
+          populate: true,
+        },
+        // Include additional fields you want to be searchable
+        fuzzysortOptions: {
+          characterLimit: 500,
+          keys: [
+            {
+              name: "title",
+              weight: 200,
+            },
+            {
+              name: "description",
+              weight: -200,
+            },
+          ],
+        }, // assuming you have title and description fields
+      }],
+    },
+  },
   // ...
 });
