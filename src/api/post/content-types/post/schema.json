@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "description": {
-      "type": "text"
-    },
     "author": {
       "type": "relation",
       "relation": "manyToOne",
@@ -62,6 +59,14 @@
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "favorites"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

@@ -36,7 +36,6 @@ module.exports = ({ env }) => ({
         queryConstraints: {
           populate: true,
         },
-        // Include additional fields you want to be searchable
         fuzzysortOptions: {
           characterLimit: 500,
           keys: [
@@ -49,7 +48,7 @@ module.exports = ({ env }) => ({
               weight: -200,
             },
           ],
-        }, // assuming you have title and description fields
+        },
       }],
     },
   },

@@ -405,7 +405,6 @@ export interface ApiPostPost extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    description: Attribute.Text;
     author: Attribute.Relation<
       'api::post.post',
       'manyToOne',
@@ -425,6 +424,12 @@ export interface ApiPostPost extends Schema.CollectionType {
       'manyToMany',
       'plugin::users-permissions.user'
     >;
+    category: Attribute.Relation<
+      'api::post.post',
+      'oneToOne',
+      'api::category.category'
+    >;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
