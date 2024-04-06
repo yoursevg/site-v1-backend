@@ -90,6 +90,18 @@
       "relation": "manyToMany",
       "target": "api::post.post",
       "inversedBy": "users_favorites"
+    },
+    "messages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::message.message",
+      "mappedBy": "sender"
+    },
+    "rooms": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::room.room",
+      "mappedBy": "users"
     }
   }
 }

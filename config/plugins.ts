@@ -52,5 +52,15 @@ module.exports = ({ env }) => ({
       }],
     },
   },
-  // ...
+  io: {
+    enabled: true,
+    config: {
+      socket: {
+        serverOptions: {
+          cors: { origin: 'http://localhost:3000', methods: ['GET', 'POST'] },
+        },
+      },
+      contentTypes: ['api::room.room'],
+    },
+  },
 });

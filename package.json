@@ -10,17 +10,23 @@
     "strapi": "strapi"
   },
   "dependencies": {
+    "@clerk/clerk-sdk-node": "^4.13.13",
     "@strapi/plugin-cloud": "4.20.4",
     "@strapi/plugin-graphql": "^4.20.4",
     "@strapi/plugin-i18n": "4.20.4",
     "@strapi/plugin-users-permissions": "4.20.4",
     "@strapi/provider-upload-cloudinary": "^4.20.5",
     "@strapi/strapi": "4.20.4",
+    "@types/jsonwebtoken": "^9.0.6",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.1.0",
     "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
+    "socket.io": "^4.7.5",
     "strapi-plugin-fuzzy-search": "^2.2.1",
+    "strapi-plugin-io": "^2.0.6",
     "styled-components": "5.3.3",
     "svix": "^1.21.0"
   },
@@ -34,5 +40,11 @@
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/supertest": "^6.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
+  }
 }
